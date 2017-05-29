@@ -1,0 +1,12 @@
+#goes日志存储位置配置
+[logConfig]
+logPath = "../log/dsPing.log"  #日志问题存储路径
+#####-------------####
+#邮箱配置
+[emailConfig]
+emailServerHost = "smtp.163.com"
+emailServerPort = 25
+sendFromUser   = "keryoo@163.com"
+senderPasswd   = "sun123456"
+sendToUser     = "keryoo@163.com"
+carbonCopyUser = "keryoo@163.com"

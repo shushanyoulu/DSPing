@@ -1,6 +1,7 @@
 package main
 
 import (
+	"DSPing/src/mn"
 	"bytes"
 	"database/sql"
 	"encoding/json"
@@ -8,7 +9,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"smartping/mn"
 	"strconv"
 	"text/template"
 	"time"
@@ -77,7 +77,7 @@ var index = template.Must(template.New("index.tpl").Delims("<%", "%>").Funcs(tem
             </div>
         </div>
         <hr/>
-        <div style="text-align:center">DSPing v<% .Conf.Ver %></div>
+        <div style="text-align:center">DSPing v<% .Conf.Version %></div>
         <br/>
     </div>
     <div id="charts" class="modal fade" tabindex="-1" role="dialog">
@@ -371,7 +371,7 @@ var topology = template.Must(template.New("topology.tpl").Delims("<%", "%>").Fun
        <div class="row" style="height: 100%">
           <div class="col-md-9" style="height: 100%"><div id="container" style="height: 100%"></div></div>
           <div class="col-md-3">
-          <% if ne .Alert "" %><audio style="display:none"  autoplay="autoplay"  controls="controls" loop="loop"><source src='<% .Alert %>' type='audio/mp3'  /></audio><% end %>
+          <% if ne .Alert "" %><audio style="display:none"  autoplay="autoplay"  controls="controls" loop="loop"><source src= '<% .Alert %>' type='audio/mp3'  /></audio><% end %>
           <%range .AGraph%>
             <div id="<% index . "From" %><% index . "To" %>_pannel" style="float:left;width:400px;height:150px;margin-right:10px;" class="well"></div>
           <%end%>
@@ -542,7 +542,7 @@ var topology = template.Must(template.New("topology.tpl").Delims("<%", "%>").Fun
 
 `))
 
-func startHttp(port int, state *State, db *sql.DB, config Config) {
+func startHttp(port int, state *Status, db *sql.DB, config Config) {
 
 	//graph data api
 	http.HandleFunc("/api/status.json", func(w http.ResponseWriter, r *http.Request) {
@@ -805,12 +805,12 @@ func startHttp(port int, state *State, db *sql.DB, config Config) {
 		}
 	})
 	s := fmt.Sprintf(":%d", port)
-	log.Println("starting to listen on ", s)
-	log.Printf("Get status on http://localhost%s/status", s)
+	logger.Println("starting to listen on ", s)
+	logger.Printf("Get status on http://localhost%s/status", s)
 	err := http.ListenAndServe(s, nil)
 	if err != nil {
-		log.Println("ERR:", err)
+		logger.Println("ERR:", err)
 	}
-	log.Println("Server on 8899 stopped")
+	logger.Println("Server on 8899 stopped")
 	os.Exit(0)
 }

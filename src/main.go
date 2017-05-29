@@ -1,30 +1,33 @@
 package main
 
 import (
-	"flag"
-	"log"
 	"database/sql"
+	"flag"
 	"sync"
 )
+
 // Init config
-var filename = flag.String("f", "config.json", "JSON configuration file")
+var filename = flag.String("f", "../conf/config.json", "JSON configuration file")
 var httpPort = flag.Int("p", 8899, "HTTP port")
 var lock sync.Mutex
 
-var Version = "0.1.3"
+const version = "0.2.3"
+
+var logger = gologger()
+
 // Main function
 func main() {
 	flag.Parse()
 	// Config
 	var config Config
-	log.Println("Opening config file: ", *filename)
+	logger.Println("Opening config file: ", *filename)
 	config = readConfig(*filename)
-	config.Ver = Version
-	log.Printf("Config loaded")
-	log.Println("LogDB : "+config.Db)
+	config.Version = version
+	logger.Printf("Config loaded")
+	logger.Println("LogDB : " + config.Db)
 	db, err := sql.Open("sqlite3", config.Db)
 	if err != nil {
-		log.Print(err)
+		logger.Println(err)
 	}
 	// Running
 	res := make(chan TargetStatus)
@@ -35,7 +38,7 @@ func main() {
 		startPing(db, config, target, res)
 	}
 	// HTTP
-	go startHttp(*httpPort, state, db , config)
+	go startHttp(*httpPort, state, db, config)
 	for {
 		status := <-res
 		state.Lock.Lock()

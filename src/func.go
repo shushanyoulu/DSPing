@@ -1,19 +1,19 @@
 package main
 
 import (
-	"strings"
 	"strconv"
+	"strings"
 )
 
-func NewState() *State {
-	s := new(State)
+func NewState() *Status {
+	s := new(Status)
 	s.State = make(map[*Target]TargetStatus)
 	return s
 }
 
-func compare(num string,nb int) bool{
-	val,_:=strconv.Atoi(num)
-	if val < nb{
+func compare(num string, nb int) bool {
+	val, _ := strconv.Atoi(num)
+	if val < nb {
 		return false
 	}
 	return true
