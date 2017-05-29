@@ -1,0 +1,43 @@
+{
+    "Name": "本机",
+    "Ip": "192.168.1.105",
+    "Db": "./database.db",
+    "Thdchecksec": "900",
+    "Thdoccnum": "1",
+    "Thdloss": "30",
+    "Thdavgdelay": "200",
+    "Alertsound": "http://mp3.13400.com:99/1917/001204170042283.mp3",
+    "Tline": "3",
+    "Tsymbolsize": "70",
+    "Targets": [{
+            "Name": "本机",
+            "Addr": "127.0.0.1",
+            "Interval": "20",
+            "Type": "CS",
+            "Thdchecksec": "900",
+            "Thdoccnum": "1",
+            "Thdloss": "30",
+            "Thdavgdelay": "200"
+        },
+        {
+            "Name": "洋桥",
+            "Addr": "192.168.1.1",
+            "Interval": "20",
+            "Type": "C",
+            "Thdchecksec": "30",
+            "Thdoccnum": "1",
+            "Thdloss": "30",
+            "Thdavgdelay": "200"
+        },
+        {
+            "Name": "内网",
+            "Addr": "192.168.1.1",
+            "Interval": "20",
+            "Type": "C",
+            "Thdchecksec": "30",
+            "Thdoccnum": "1",
+            "Thdloss": "30",
+            "Thdavgdelay": "200"
+        }
+    ]
+}
