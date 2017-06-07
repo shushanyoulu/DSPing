@@ -1,3 +1,5 @@
-[dsPing] 2017/05/29 15:36:53 main.go:23: Opening config file:  ../conf/config.json
-[dsPing] 2017/05/29 15:36:53 main.go:26: Config loaded
-[dsPing] 2017/05/29 15:36:53 main.go:27: LogDB : ../db/database.db
+[dsPing] 2017/06/07 16:54:49 main.go:23: Opening config file:  ../conf/config.json
+[dsPing] 2017/06/07 16:54:49 main.go:26: Config loaded
+[dsPing] 2017/06/07 16:54:49 main.go:27: LogDB : ../db/database.db
+[dsPing] 2017/06/07 16:54:49 web.go:808: starting to listen on  :8899
+[dsPing] 2017/06/07 16:54:49 web.go:809: Get status on http://localhost:8899/status

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"DSPing/src/mn"
 	"bytes"
 	"database/sql"
 	"encoding/json"
@@ -12,6 +11,8 @@ import (
 	"strconv"
 	"text/template"
 	"time"
+
+	"github.com/shushanyoulu/DSPing/src/mn"
 
 	"github.com/go-resty/resty"
 )
@@ -24,7 +25,7 @@ var index = template.Must(template.New("index.tpl").Delims("<%", "%>").Funcs(tem
 <html>
 	<head>
 	    <meta charset="utf-8" http-equiv="refresh" content="60"> 
-		 <title>[<% $Localname %>] SMARTPING</title>
+		 <title>[<% $Localname %>] dsPing</title>
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
@@ -405,7 +406,7 @@ var topology = template.Must(template.New("topology.tpl").Delims("<%", "%>").Fun
 	  <%end%>
          option = {
             title: {
-                text: 'SMARTPING TOPOLOGY'
+                text: 'dsPing TOPOLOGY'
             },
             tooltip: {},
             animationDurationUpdate: 1500,
