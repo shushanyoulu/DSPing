@@ -11,7 +11,7 @@ var filename = flag.String("f", "../conf/config.json", "JSON configuration file"
 var httpPort = flag.Int("p", 8899, "HTTP port")
 var lock sync.Mutex
 
-const version = "0.2.3"
+const version = "0.3.5"
 
 var logger = gologger()
 
